@@ -1,0 +1,33 @@
+{
+  "course_name": "AI 应用工程师 30 天魔鬼训练营",
+  "levels": {
+    "Week_1_基础扫盲期": [
+      {"id": "K1_1", "topic": "LLM 核心原理与 Tokenization", "points": ["Transformer 架构", "BPE 算法", "上下文窗口限制"]},
+      {"id": "K1_2", "topic": "提示词工程 (Prompt Engineering)", "points": ["Few-Shot", "Chain of Thought (CoT)", "Zero-Shot CoT"]},
+      {"id": "K1_3", "topic": "Function Calling (工具调用)", "points": ["JSON Schema", "模型如何决定调用工具", "参数提取"]},
+      {"id": "K1_4", "topic": "API 交互与多模型选型", "points": ["流式输出 (Streaming)", "速率限制处理", "成本估算与对比"]},
+      {"id": "EXAM_W1", "topic": "周六大考：构建一个带工具调用的翻译系统", "type": "Saturday_Exam"}
+    ],
+    "Week_2_RAG_与数据进阶": [
+      {"id": "K2_1", "topic": "RAG 全流程揭秘", "points": ["Indexing", "Retrieval", "Generation", "Embedding 模型"]},
+      {"id": "K2_2", "topic": "向量数据库 (VectorDB)", "points": ["Pinecone/Milvus/Chroma", "索引算法 (HNSW/IVF)", "相似度计算"]},
+      {"id": "K2_3", "topic": "文档切分 (Chunking) 策略", "points": ["语义切分", "重叠切分 (Overlap)", "Metadata 的作用"]},
+      {"id": "K2_4", "topic": "高级 RAG 优化", "points": ["HyDE (假设性文档嵌入)", "Multi-query", "Rerank 重排序"]},
+      {"id": "EXAM_W2", "topic": "周六大考：设计一个公司内部知识库 RAG 系统", "type": "Saturday_Exam"}
+    ],
+    "Week_3_Agent_工作流与自动化": [
+      {"id": "K3_1", "topic": "Agent 核心模式", "points": ["ReAct 框架", "Plan-and-Execute", "Reflection 反思机制"]},
+      {"id": "K3_2", "topic": "多代理协同 (Multi-Agent)", "points": ["AutoGen 模式", "CrewAI/LangGraph 逻辑", "状态管理"]},
+      {"id": "K3_3", "topic": "RPA 与 AI 结合", "points": ["非结构化数据到 RPA 流程", "异常处理逻辑", "UI 自动化中的 AI"]},
+      {"id": "K3_4", "topic": "持久化记忆 (Memory)", "points": ["Short-term vs Long-term", "Summary 记忆", "Entity 记忆"]},
+      {"id": "EXAM_W3", "topic": "周六大考：开发一个全自动化的竞品调研 Agent", "type": "Saturday_Exam"}
+    ],
+    "Week_4_工程化与实战": [
+      {"id": "K4_1", "topic": "AI 应用评估 (Evaluation)", "points": ["RAGAS 框架", "人工评测 vs 模型评测", "基准测试"]},
+      {"id": "K4_2", "topic": "模型微调 (Fine-tuning) 扫盲", "points": ["SFT (指令微调)", "LoRA/QLoRA 原理", "数据集准备"]},
+      {"id": "K4_3", "topic": "部署与监控", "points": ["LangSmith/Weights & Biases", "护栏机制 (Guardrails)", "高并发处理"]},
+      {"id": "K4_4", "topic": "未来趋势：多模态与长上下文", "points": ["Multimodal (视觉/音频)", "Gemini 1.5/Claude 3 长文本应用", "Agentic Workflow"]},
+      {"id": "EXAM_W4", "topic": "周六大考：交付一个端到端的生产级 AI 应用方案", "type": "Saturday_Exam"}
+    ]
+  }
+}

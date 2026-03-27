@@ -1,0 +1,2699 @@
+{
+  "fixture_version": 1,
+  "fixture_name": "five_user_black_box_journeys",
+  "purpose": "用于黑盒测试 OpenClaw 在仅看到用户行为、估分与最小可见状态时，是否能正确理解意图并选择后续流程。",
+  "black_box_rules": [
+    "不暴露脚本名、事件类型标签或期望路由。",
+    "不暴露结构化题号字段，只保留自然语言层面的用户行为。",
+    "Each day only exposes user actions, estimated scores, and a few state clues."
+  ],
+  "users": [
+    {
+      "user_id": "steady_ace",
+      "display_name": "稳扎稳打",
+      "timeline": [
+        {
+          "day": 1,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示想加入训练营，从今天开始学习。",
+              "state_note": "这是一个新用户进入训练营的起点。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 92,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 94,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户额外完成了一次隐藏挑战。",
+              "estimated_score": 88,
+              "state_note": "这不是常规日题，而是一次附加挑战。"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 89,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 85,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 86,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 91,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 88,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 87,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 84,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 85,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 89,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 15,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 86,
+              "weak_point_summary": "异常分支覆盖不足",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 16,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 91,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 17,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户主动提交了一次额外加练。",
+              "estimated_score": 83,
+              "state_note": "这是一次主动加练，不是当天必做题。"
+            }
+          ]
+        },
+        {
+          "day": 18,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 84,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 19,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 20,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 88,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 21,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 92,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 22,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 23,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 87,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 24,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 89,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "user_id": "occasional_recover",
+      "display_name": "偶尔漏答但能补救",
+      "timeline": [
+        {
+          "day": 1,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示想加入训练营，从今天开始学习。",
+              "state_note": "这是一个新用户进入训练营的起点。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 84,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 78,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 81,
+              "weak_point_summary": "存在轻微薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 76,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次费曼复述或复盘内容。",
+              "estimated_score": 72,
+              "weak_point_summary": "工业场景细节不足",
+              "state_note": "这是一次补充型学习行为，不是常规大考。"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 74,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 80,
+              "weak_point_summary": "存在轻微薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 77,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 82,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 4 题。",
+              "estimated_score": 79,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 75,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 72,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 83,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 15,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 78,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 16,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 17,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 74,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 18,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户主动提交了一次额外加练。",
+              "estimated_score": 76,
+              "state_note": "这是一次主动加练，不是当天必做题。"
+            }
+          ]
+        },
+        {
+          "day": 19,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 70,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 20,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 82,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 21,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 22,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 75,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 23,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 24,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 84,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 25,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 78,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 26,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天只查看了内容，没有提交新的答案。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 27,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 73,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 28,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段性复盘或短暂休整记录。",
+              "state_note": "这是一次阶段中间的整理型事件，不代表课程收尾。"
+            }
+          ]
+        },
+        {
+          "day": 29,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 81,
+              "weak_point_summary": "知识迁移还不够稳定",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 30,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 31,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 77,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 83,
+              "weak_point_summary": "细节解释仍有一点松散",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 32,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 76,
+              "weak_point_summary": "抽象概念到具体例子的转换还不够顺畅",
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 33,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 78,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 34,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 84,
+              "weak_point_summary": "仍偶有步骤跳跃",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 35,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 82,
+              "weak_point_summary": "对边界条件的照顾还不够充分",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 36,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 37,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 79,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 85,
+              "weak_point_summary": "整体正确，但表达还略显粗糙",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 38,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次费曼复述或复盘内容。",
+              "estimated_score": 80,
+              "weak_point_summary": "主线梳理比之前清楚，但还需要更紧密的因果连接",
+              "state_note": "这是一次补充型学习行为，不是常规大考。"
+            }
+          ]
+        },
+        {
+          "day": 39,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 81,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 40,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 86,
+              "weak_point_summary": "偶尔还是会遗漏更细的约束",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 41,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 42,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 43,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 84,
+              "weak_point_summary": "解释时有时会先跳结论再补过程",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 44,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 82,
+              "weak_point_summary": "回顾结构逐步清晰，但还不算完全稳定",
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 45,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 83,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "user_id": "deadline_sprinter",
+      "display_name": "拖到最后一刻",
+      "timeline": [
+        {
+          "day": 1,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示想加入训练营，从今天开始学习。",
+              "state_note": "这是一个新用户进入训练营的起点。"
+            },
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 72,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 75,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 78,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 81,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 71,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 73,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 74,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 76,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 15,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 16,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 70,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 17,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 18,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 19,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 20,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 71,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 21,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 73,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 22,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 75,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 23,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 79,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 24,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 72,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 25,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 26,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 27,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 28,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 72,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 29,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 74,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 30,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 76,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 31,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 32,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 71,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 33,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 34,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 35,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 71,
+              "weak_point_summary": "起步常慢半拍，基础题容易拖成补交。",
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 36,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 73,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 75,
+              "weak_point_summary": "第 3 题里步骤衔接还不够顺，容易跳步。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 37,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户查看了本阶段讲义并整理了思路，今天没有新的提交。",
+              "state_note": "这是一次查看内容/准备考试的过渡日。"
+            }
+          ]
+        },
+        {
+          "day": 38,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 77,
+              "weak_point_summary": "第 4 题收尾还算完整，但论证略显仓促。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 39,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 74,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 40,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 41,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 42,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 76,
+              "weak_point_summary": "补回基础题时还会漏掉部分中间过程。",
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 43,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 78,
+              "weak_point_summary": "对第 2 题的边界条件把握还不够稳。",
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 79,
+              "weak_point_summary": "第 3 题能做出来，但解释细节还偏粗。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 44,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 81,
+              "weak_point_summary": "第 4 题收尾还算完整，但论证略显仓促。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 45,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 75,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 46,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 47,
+          "events": [
+          {
+            "speaker": "user",
+            "message": "用户今天主要在整理前两题，没有新的提交。",
+            "state_note": "系统可观察到一次状态性调整，不产生新的提交。"
+          }
+        ]
+      },
+        {
+          "day": 48,
+          "events": [
+          {
+            "speaker": "user",
+            "message": "用户提交了本阶段第 2 题的答案。",
+            "estimated_score": 80,
+            "weak_point_summary": "第 2 题的细节覆盖还不够完整。",
+            "state_note": "系统可观察到一次正常日题作答。"
+          },
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 81,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 49,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 82,
+              "weak_point_summary": "第 3 题终于能正常提交，但收尾还略紧。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 50,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 83,
+              "weak_point_summary": "第 4 题能收口，但案例展开还不够细。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 51,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 80,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 52,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 53,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 79,
+              "weak_point_summary": "补回第 1 题时仍会省略一部分推导。",
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 81,
+              "weak_point_summary": "第 2 题的细节覆盖还不够完整。",
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 54,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 83,
+              "weak_point_summary": "第 3 题终于能正常提交，但收尾还略紧。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 55,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 84,
+              "weak_point_summary": "第 4 题能收口，但案例展开还不够细。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 81,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 56,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 57,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 79,
+              "weak_point_summary": "第 1 题虽然补上了，但案例解释还比较省略。",
+              "state_note": "系统可观察到一次补交后的题目回填。"
+            }
+          ]
+        },
+        {
+          "day": 58,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 82,
+              "weak_point_summary": "第 2 题终于开始写全，但细节展开还略紧。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 59,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 60,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 83,
+              "weak_point_summary": "第 3 题已经补齐，但收尾说明还是偏短。",
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 61,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 84,
+              "weak_point_summary": "第 4 题能完整交卷，但论证还不算特别扎实。",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 62,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 82,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "user_id": "swing_lazy",
+      "display_name": "起伏型懒惰者",
+      "timeline": [
+        {
+          "day": 1,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示想加入训练营，从今天开始学习。",
+              "state_note": "这是一个新用户进入训练营的起点。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 88,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 86,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 84,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 83,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 81,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天只查看了内容，没有提交新的答案。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 76,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 72,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 74,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 4 题。",
+              "estimated_score": 73,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在准备考试，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 68,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 15,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 70,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 16,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 17,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 18,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 65,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 19,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 20,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 4 题。",
+              "estimated_score": 67,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 21,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 51,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 22,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 23,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 68,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 24,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 25,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 26,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 2 题。",
+              "estimated_score": 66,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 27,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 64,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 28,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 56,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 29,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 30,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 31,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 32,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 33,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 60,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 34,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 35,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 42,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 36,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 72,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 37,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 70,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 38,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 39,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 68,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 40,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在整理前两题，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 41,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 42,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 4 题。",
+              "estimated_score": 71,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 43,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在准备考试，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 44,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 67,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 45,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在查看讲解，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 46,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 74,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 47,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 75,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 48,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在复盘前面的错题，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 49,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 76,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 50,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 77,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 51,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 70,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 52,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 53,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 1 题。",
+              "estimated_score": 74,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 54,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 76,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 55,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在查看讲解，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 56,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 77,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 57,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 78,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 58,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 73,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 59,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 60,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 81,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 61,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在整理错题，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 62,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 82,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 63,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 83,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 64,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 79,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 65,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 81,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 66,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在查看讲解，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 67,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 68,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 81,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 69,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "直到当天截止时间都没有收到用户新的作业提交。",
+              "state_note": "这是一次漏答日。"
+            }
+          ]
+        },
+        {
+          "day": 70,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户补交了之前漏掉的本阶段第 3 题。",
+              "estimated_score": 79,
+              "state_note": "系统可观察到一次补交行为，说明此前存在漏答或延期。"
+            }
+          ]
+        },
+        {
+          "day": 71,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 82,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 72,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 80,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        },
+        {
+          "day": 73,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在查看讲解，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 74,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 82,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 75,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 83,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 76,
+          "events": [
+            {
+              "speaker": "system",
+              "message": "用户今天主要在复盘前面的错题，没有新的提交。",
+              "state_note": "当日没有新的可计分作答。"
+            }
+          ]
+        },
+        {
+          "day": 77,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 84,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 78,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 85,
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 79,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了一次阶段巩固题或复盘题。",
+              "estimated_score": 80,
+              "state_note": "系统可观察到一次额外巩固作答。"
+            }
+          ]
+        },
+        {
+          "day": 80,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 82,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "user_id": "early_exam_rocket",
+      "display_name": "提前大考速通者",
+      "timeline": [
+        {
+          "day": 1,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示想加入训练营，从今天开始学习。",
+              "state_note": "这是一个新用户进入训练营的起点。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 91,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 92,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 4,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 89,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 5,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示本阶段四道题已经做完，希望直接参加提前大考。",
+              "state_note": "这是一次提前大考申请，尚未构成正式结算。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了提前大考答案。",
+              "estimated_score": 87,
+              "state_note": "这是一次提前大考作答，需要结合规则判断能否直接晋级。"
+            }
+          ]
+        },
+        {
+          "day": 6,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 7,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 88,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 8,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 89,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 9,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 91,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 10,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示本阶段四道题已经做完，希望直接参加提前大考。",
+              "state_note": "这是一次提前大考申请，尚未构成正式结算。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了提前大考答案。",
+              "estimated_score": 85,
+              "state_note": "这是一次提前大考作答，需要结合规则判断能否直接晋级。"
+            }
+          ]
+        },
+        {
+          "day": 11,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 87,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 12,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 88,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 13,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 86,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 14,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 89,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 15,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户表示本阶段四道题已经做完，希望直接参加提前大考。",
+              "state_note": "这是一次提前大考申请，尚未构成正式结算。"
+            },
+            {
+              "speaker": "user",
+              "message": "用户提交了提前大考答案。",
+              "estimated_score": 84,
+              "state_note": "这是一次提前大考作答，需要结合规则判断能否直接晋级。"
+            }
+          ]
+        },
+        {
+          "day": 16,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 1 题的答案。",
+              "estimated_score": 88,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 17,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 2 题的答案。",
+              "estimated_score": 86,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 18,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 3 题的答案。",
+              "estimated_score": 90,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 19,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段第 4 题的答案。",
+              "estimated_score": 87,
+              "weak_point_summary": "未见明显薄弱点",
+              "state_note": "系统可观察到一次正常日题作答。"
+            }
+          ]
+        },
+        {
+          "day": 20,
+          "events": [
+            {
+              "speaker": "user",
+              "message": "用户提交了本阶段大考。",
+              "estimated_score": 88,
+              "state_note": "系统到达阶段结算点，需要结合平时表现判断是否晋级。"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

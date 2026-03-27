@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "date",
+    "question_type",
+    "history"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "question_type": {
+      "type": "string",
+      "enum": [
+        "daily_quiz",
+        "makeup_exam",
+        "extra_practice",
+        "consolidation_practice",
+        "feynman",
+        "hidden_challenge",
+        "saturday_exam"
+      ]
+    },
+    "topic_id": {
+      "type": "string",
+      "pattern": "^(K[1-4]_[1-4]|EXAM_W[1-4])$"
+    },
+    "score": {
+      "type": "number"
+    },
+    "score_change": {
+      "type": "number"
+    },
+    "feedback": {
+      "type": "string"
+    },
+    "mark_daily_answered": {
+      "type": "boolean"
+    },
+    "week_daily_record_index": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
+    },
+    "mark_feynman_used": {
+      "type": "boolean"
+    },
+    "mark_saturday_exam_answered": {
+      "type": "boolean"
+    },
+    "increment_extra_practice_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "set_hidden_challenge_used": {
+      "type": "boolean"
+    },
+    "knowledge_update": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "topic_id",
+        "status",
+        "mastery_level",
+        "last_tested"
+      ],
+      "properties": {
+        "topic_id": {
+          "type": "string",
+          "pattern": "^K[1-4]_[1-4]$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "not_started",
+            "learning",
+            "mastered"
+          ]
+        },
+        "mastery_level": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "last_tested": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "weak_point_entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "topic_id",
+        "topic_name",
+        "question_type",
+        "score",
+        "max_score",
+        "score_percentage",
+        "understanding_level",
+        "weak_points"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "topic_id": {
+          "type": "string",
+          "pattern": "^(K[1-4]_[1-4]|EXAM_W[1-4])$"
+        },
+        "topic_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question_type": {
+          "type": "string",
+          "enum": [
+            "daily_quiz",
+            "saturday_exam",
+            "makeup_exam",
+            "extra_practice",
+            "consolidation_practice"
+          ]
+        },
+        "score": {
+          "type": "number"
+        },
+        "max_score": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "score_percentage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "understanding_level": {
+          "type": "string",
+          "enum": [
+            "critical",
+            "weak",
+            "moderate"
+          ]
+        },
+        "weak_points": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event",
+        "action"
+      ],
+      "properties": {
+        "event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string"
+        },
+        "exam_score": {
+          "type": "number"
+        },
+        "actual_score": {
+          "type": "number"
+        },
+        "grade": {
+          "type": "string"
+        },
+        "promotion": {
+          "type": "boolean"
+        },
+        "new_level": {
+          "type": "string"
+        }
+      }
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

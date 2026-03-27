@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "score_type",
+    "new_score"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "score_type": {
+      "type": "string",
+      "enum": [
+        "estimated_score",
+        "actual_score",
+        "total_score",
+        "平时分",
+        "实际段位分",
+        "总分"
+      ]
+    },
+    "new_score": {
+      "type": "number"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "reason": {
+      "type": "string"
+    }
+  }
+}

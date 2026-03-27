@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "display_name",
+    "enrollment_date"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "enrollment_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "telegram_id": {
+      "type": "string"
+    },
+    "wechat_chat_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "level": {
+      "type": "string",
+      "enum": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L1_基础扫盲期",
+        "L2_RAG与数据进阶",
+        "L3_Agent工作流与自动化",
+        "L4_工程化与实战"
+      ]
+    }
+  }
+}

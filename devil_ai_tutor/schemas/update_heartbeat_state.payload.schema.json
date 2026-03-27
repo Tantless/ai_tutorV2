@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reset_weekly_flags": {
+      "type": "boolean"
+    },
+    "state_updates": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "last_anomaly_check": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "last_learning_guide": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "last_care_message": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "last_data_integrity_check": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "friday_exam_reminder_sent_this_week": {
+          "type": "boolean"
+        },
+        "saturday_morning_reminder_sent_this_week": {
+          "type": "boolean"
+        },
+        "saturday_afternoon_exam_reminder_sent_this_week": {
+          "type": "boolean"
+        },
+        "week_reset_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "last_daily_quiz_sent": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        },
+        "last_memory_write": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+        }
+      }
+    }
+  }
+}

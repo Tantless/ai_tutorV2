@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "date",
+    "delivery_type",
+    "topic_id"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "delivery_type": {
+      "type": "string",
+      "enum": [
+        "daily_quiz",
+        "saturday_exam",
+        "consolidation_practice",
+        "early_exam"
+      ]
+    },
+    "topic_id": {
+      "type": "string",
+      "pattern": "^(K[1-4]_[1-4]|EXAM_W[1-4])$"
+    },
+    "advance_topic": {
+      "type": "boolean"
+    },
+    "event": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "delivery_status": {
+      "type": "string"
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

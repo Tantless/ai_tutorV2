@@ -1,0 +1,113 @@
+{
+  "version": 1,
+  "jobs": [
+    {
+      "id": "7cb1086d-711d-44c4-b70c-d957f7d45da6",
+      "name": "魔鬼AI导师-每日9点半出题",
+      "enabled": true,
+      "createdAtMs": 1773137487308,
+      "updatedAtMs": 1773721518098,
+      "schedule": {
+        "kind": "cron",
+        "expr": "30 9 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "现在是每日 09:30。先读取 skills/devil_ai_tutor/data/syllabus.json、skills/devil_ai_tutor/data/users/USER_FORMAT.md 和 skills/devil_ai_tutor/references/script_contracts.md。遍历 skills/devil_ai_tutor/data/users/ 下的真实用户文件，跳过 user_template.json，并跳过已结业用户；已结业用户的判定标准是 weekly_scores 中已经存在 week=4 的通过记录。对每个未结业用户先构造 schemas/resolve_assignment.payload.schema.json 的 payload，并调用 python skills/devil_ai_tutor/scripts/resolve_assignment.py，delivery_type=daily_quiz。只有脚本成功返回 assignment 后，才允许生成并发送今日题目；发送完成后，再构造 schemas/record_assignment_delivery.payload.schema.json 的 payload，并调用 python skills/devil_ai_tutor/scripts/record_assignment_delivery.py 落盘。不要自己猜 topic_id。"
+      },
+      "state": {
+        "nextRunAtMs": 1773797400000,
+        "lastRunAtMs": 1773721161233,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 356865,
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "31016751-7941-44c7-9139-6af698f189ea",
+      "name": "魔鬼AI导师-每日00点超时扣分",
+      "enabled": true,
+      "createdAtMs": 1773137498179,
+      "updatedAtMs": 1773677077661,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 0 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "现在是每日 00:00。先读取 skills/devil_ai_tutor/data/users/USER_FORMAT.md 和 skills/devil_ai_tutor/references/script_contracts.md。检查所有真实且未结业的用户：如果 daily_answered_date 不等于昨天的日期，则视为昨天未答题。对每个用户分别构造 schemas/handle_midnight_reset.payload.schema.json 的 payload，并调用 python skills/devil_ai_tutor/scripts/handle_midnight_reset.py。未答题用户使用 penalize=true、penalty_amount=-10，并额外传入 penalty_topic_id；该值必须来自昨天那道日题的真实 topic_id，优先从 current_week_state.assignment_receipts 中查找最近一条 delivery_type=daily_quiz 且 status=delivered 的 receipt，若拿不到就记录异常并跳过，不要猜。已答题用户也要调用脚本做每日状态重置，但使用 penalize=false。不要手改任何用户 JSON。"
+      },
+      "state": {
+        "nextRunAtMs": 1773763200000,
+        "lastRunAtMs": 1773676800007,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 277654,
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "124ac4de-e199-408b-b6ce-ebf8c2fd76b0",
+      "name": "魔鬼AI导师-周六12点大考",
+      "enabled": true,
+      "createdAtMs": 1773137519896,
+      "updatedAtMs": 1773460803156,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 12 * * 6",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "现在是周六 12:00。读取 skills/devil_ai_tutor/data/syllabus.json、skills/devil_ai_tutor/data/users/USER_FORMAT.md 和 skills/devil_ai_tutor/references/script_contracts.md。只处理真实且未结业的用户；已结业用户的判定标准是 weekly_scores 中已经存在 week=4 的通过记录。对每个未结业用户先构造 schemas/resolve_assignment.payload.schema.json 的 payload，并调用 python skills/devil_ai_tutor/scripts/resolve_assignment.py，delivery_type=saturday_exam。只有脚本成功返回 assignment 后，才允许生成并发送大考题；发送完成后，再构造 schemas/record_assignment_delivery.payload.schema.json 的 payload，并调用 python skills/devil_ai_tutor/scripts/record_assignment_delivery.py 落盘。不要自己拼 EXAM_W{week_number}。"
+      },
+      "state": {
+        "nextRunAtMs": 1774065600000,
+        "lastRunAtMs": 1773460800015,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 3141,
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    },
+    {
+      "id": "2ca358d1-4e65-4c77-8b34-3adefd28196a",
+      "name": "魔鬼AI导师-每日20点提醒",
+      "enabled": true,
+      "createdAtMs": 1773294753652,
+      "updatedAtMs": 1773662502208,
+      "schedule": {
+        "kind": "cron",
+        "expr": "0 20 * * *",
+        "tz": "Asia/Shanghai"
+      },
+      "sessionTarget": "main",
+      "wakeMode": "now",
+      "payload": {
+        "kind": "systemEvent",
+        "text": "现在是每日 20:00。读取 skills/devil_ai_tutor/data/users/USER_FORMAT.md，检查所有真实且未结业的用户：如果 daily_answered_date 不等于今天，则发送提醒，提醒截止时间为 24:00。已结业用户不再发送训练提醒。这个任务只负责提醒，不进行任何数据写入，因此不要调用写脚本，也不要修改任何 JSON。"
+      },
+      "state": {
+        "nextRunAtMs": 1773748800000,
+        "lastRunAtMs": 1773662400009,
+        "lastRunStatus": "ok",
+        "lastStatus": "ok",
+        "lastDurationMs": 102199,
+        "lastDeliveryStatus": "not-requested",
+        "consecutiveErrors": 0
+      }
+    }
+  ]
+}

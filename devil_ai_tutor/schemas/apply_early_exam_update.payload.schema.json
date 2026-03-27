@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "date",
+    "action",
+    "history"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "request",
+        "pass",
+        "fail",
+        "enable_try_it",
+        "disable_try_it"
+      ]
+    },
+    "target_level": {
+      "type": "string",
+      "enum": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L1_基础扫盲期",
+        "L2_RAG与数据进阶",
+        "L3_Agent工作流与自动化",
+        "L4_工程化与实战"
+      ]
+    },
+    "target_topic_id": {
+      "type": "string",
+      "pattern": "^K[1-4]_[1-4]$"
+    },
+    "enable_try_it": {
+      "type": "boolean"
+    },
+    "try_it_accumulated_score": {
+      "type": "number"
+    },
+    "estimated_score_override": {
+      "type": "number"
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event",
+        "action"
+      ],
+      "properties": {
+        "event": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "pass"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "then": {
+        "required": [
+          "target_level"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "action": {
+            "const": "enable_try_it"
+          }
+        },
+        "required": [
+          "action"
+        ]
+      },
+      "then": {
+        "required": [
+          "try_it_accumulated_score"
+        ]
+      }
+    }
+  ]
+}

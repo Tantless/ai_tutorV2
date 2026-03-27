@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "date",
+    "penalize"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "penalize": {
+      "type": "boolean"
+    },
+    "penalty_amount": {
+      "type": "number"
+    },
+    "missed_days_increment": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "penalty_topic_id": {
+      "type": "string",
+      "pattern": "^K[1-4]_[1-4]$"
+    },
+    "event": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

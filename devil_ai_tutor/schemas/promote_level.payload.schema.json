@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "target_level"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "target_level": {
+      "type": "string",
+      "enum": [
+        "L1",
+        "L2",
+        "L3",
+        "L4",
+        "L1_基础扫盲期",
+        "L2_RAG与数据进阶",
+        "L3_Agent工作流与自动化",
+        "L4_工程化与实战"
+      ]
+    },
+    "target_topic_id": {
+      "type": "string",
+      "pattern": "^K[1-4]_[1-4]$"
+    },
+    "estimated_score": {
+      "type": "number"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "reason": {
+      "type": "string"
+    }
+  }
+}

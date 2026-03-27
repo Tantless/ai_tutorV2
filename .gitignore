@@ -1,0 +1,11 @@
+docs/
+
+# Runtime state
+devil_ai_tutor/data/heartbeat_state.json
+
+# User data: ignore all persisted user JSONs
+devil_ai_tutor/data/users/*.json
+
+# Keep format/template under version control
+!devil_ai_tutor/data/users/user_template.json
+!devil_ai_tutor/data/users/USER_FORMAT.md

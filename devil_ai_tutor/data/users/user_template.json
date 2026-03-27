@@ -1,0 +1,77 @@
+{
+  "telegram_id": "",
+  "wechat_chat_id": null,
+  "username": "",
+  "display_name": "",
+  "enrollment_date": "",
+  "level": "L1_基础扫盲期",
+  "actual_score": 0,
+  "total_score": 0.00,
+  "current_week_state": {
+    "week_number": 1,
+    "current_topic": "K1_1",
+    "estimated_score": 60,
+    "interactive_bonus": 0,
+    "daily_answered": false,
+    "daily_answered_date": null,
+    "week_daily_record": [0, 0, 0, 0, 0, 0, 0],
+    "saturday_exam_answered": false,
+    "saturday_exam_answered_date": null,
+    "missed_days": 0,
+    "extra_practice_count": 0,
+    "feynman_used_today": false,
+    "feynman_used_date": null,
+    "hidden_challenge_used_this_week": false,
+    "early_exam_requested": false,
+    "early_exam_taken": false,
+    "try_it_mode": false,
+    "try_it_accumulated_score": 0,
+    "assignment_receipts": []
+  },
+  "processed_operations": [],
+  "weekly_scores": [],
+  "knowledge_mastery": {
+    "K1_1": {
+      "status": "learning",
+      "mastery_level": 0,
+      "last_tested": null
+    },
+    "K1_2": {
+      "status": "not_started",
+      "mastery_level": 0,
+      "last_tested": null
+    },
+    "K1_3": {
+      "status": "not_started",
+      "mastery_level": 0,
+      "last_tested": null
+    },
+    "K1_4": {
+      "status": "not_started",
+      "mastery_level": 0,
+      "last_tested": null
+    }
+  },
+  "weak_points_history": [],
+  "history_logs": [
+    {
+      "date": "",
+      "event": "注册魔鬼 AI 导师训练营",
+      "action": "enrollment",
+      "topic": null,
+      "status": null,
+      "score": null,
+      "score_change": null,
+      "current_estimated_score": null,
+      "new_estimated_score": null,
+      "feedback": null,
+      "exam_score": null,
+      "actual_score": null,
+      "grade": null,
+      "promotion": null,
+      "new_level": null,
+      "total_score_contribution": null,
+      "new_total_score": null
+    }
+  ]
+}

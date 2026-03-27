@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "username",
+    "date",
+    "exam_score"
+  ],
+  "properties": {
+    "username": {
+      "type": "string",
+      "minLength": 1
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "exam_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "exam_topic_id": {
+      "type": "string",
+      "pattern": "^EXAM_W[1-4]$"
+    },
+    "final_estimated_score_assert": {
+      "type": "number"
+    },
+    "event": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "operation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}
