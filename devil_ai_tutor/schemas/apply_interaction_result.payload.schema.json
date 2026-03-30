@@ -201,6 +201,13 @@
     "operation_id": {
       "type": "string",
       "minLength": 1
+    },
+    "resolved_weak_points": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
     }
   }
 }

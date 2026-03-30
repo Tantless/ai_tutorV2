@@ -6,7 +6,7 @@
   "enrollment_date": "",
   "level": "L1_基础扫盲期",
   "actual_score": 0,
-  "total_score": 0.00,
+  "total_score": 0.0,
   "current_week_state": {
     "week_number": 1,
     "current_topic": "K1_1",
@@ -14,7 +14,15 @@
     "interactive_bonus": 0,
     "daily_answered": false,
     "daily_answered_date": null,
-    "week_daily_record": [0, 0, 0, 0, 0, 0, 0],
+    "week_daily_record": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
     "saturday_exam_answered": false,
     "saturday_exam_answered_date": null,
     "missed_days": 0,
@@ -26,7 +34,9 @@
     "early_exam_taken": false,
     "try_it_mode": false,
     "try_it_accumulated_score": 0,
-    "assignment_receipts": []
+    "assignment_receipts": [],
+    "supplementary_reward_count": 0,
+    "active_weak_points": []
   },
   "processed_operations": [],
   "weekly_scores": [],

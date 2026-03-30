@@ -8,7 +8,7 @@ from .catalog import (
     exam_topic_for_week,
     first_topic_for_week,
     is_exam_topic,
-    next_topic_in_week,
+    knowledge_topics_for_week,
     topic_exists,
     topic_name,
     topic_week,
@@ -60,6 +60,107 @@ def _append_history(user_data: dict[str, Any], entry: dict[str, Any]) -> str:
 
 def _resolve_user(payload: dict[str, Any]) -> tuple[dict[str, Any], list[str]]:
     return load_user(payload["username"])
+
+
+def _answered_daily_topics_for_week(user_data: dict[str, Any], week_number: int) -> set[str]:
+    return {
+        receipt["topic_id"]
+        for receipt in assignment_receipts(user_data)
+        if receipt.get("delivery_type") == "daily_quiz"
+        and receipt.get("status") == "answered"
+        and topic_week(receipt.get("topic_id")) == week_number
+        and not is_exam_topic(receipt["topic_id"])
+    }
+
+
+def _first_unanswered_daily_topic(user_data: dict[str, Any], week_number: int) -> str | None:
+    answered_topics = _answered_daily_topics_for_week(user_data, week_number)
+    for topic in knowledge_topics_for_week(week_number):
+        if topic["id"] not in answered_topics:
+            return topic["id"]
+    return None
+
+
+def _refresh_current_topic_to_stage_queue(user_data: dict[str, Any]) -> str:
+    current_state = user_data["current_week_state"]
+    week_number = current_state["week_number"]
+    next_topic = _first_unanswered_daily_topic(user_data, week_number)
+    current_state["current_topic"] = next_topic or exam_topic_for_week(week_number)
+    return current_state["current_topic"]
+
+
+def _latest_answered_daily_topic(user_data: dict[str, Any], week_number: int) -> str | None:
+    for receipt in reversed(assignment_receipts(user_data)):
+        topic_id = receipt.get("topic_id")
+        if (
+            receipt.get("delivery_type") == "daily_quiz"
+            and receipt.get("status") == "answered"
+            and isinstance(topic_id, str)
+            and topic_week(topic_id) == week_number
+            and not is_exam_topic(topic_id)
+        ):
+            return topic_id
+    return None
+
+
+def _all_daily_topics_answered(user_data: dict[str, Any], week_number: int) -> bool:
+    return _first_unanswered_daily_topic(user_data, week_number) is None
+
+
+def _active_weak_points_for_week(user_data: dict[str, Any], week_number: int) -> list[dict[str, Any]]:
+    active = user_data["current_week_state"].setdefault("active_weak_points", [])
+    return [entry for entry in active if topic_week(entry.get("topic_id")) == week_number]
+
+
+def _resolve_supplementary_assignment(user_data: dict[str, Any], username: str, week_number: int) -> dict[str, Any]:
+    if not _all_daily_topics_answered(user_data, week_number):
+        raise OperationError(
+            f"supplementary_task is only available after all daily_quiz topics are answered for week {week_number}",
+            entity=_entity_user(username),
+        )
+
+    active_weak_points = _active_weak_points_for_week(user_data, week_number)
+    if active_weak_points:
+        chosen = active_weak_points[0]
+        topic_id = chosen["topic_id"]
+        return {
+            "username": username,
+            "week_number": week_number,
+            "level": user_data["level"],
+            "delivery_type": "consolidation_practice",
+            "topic_id": topic_id,
+            "topic_name": topic_name(topic_id),
+            "advance_topic": False,
+            "requires_delivery_record": True,
+            "focus": chosen["weak_point"],
+        }
+
+    current_state = user_data["current_week_state"]
+    if current_state["extra_practice_count"] < 5:
+        topic_id = _latest_answered_daily_topic(user_data, week_number) or first_topic_for_week(week_number)
+        return {
+            "username": username,
+            "week_number": week_number,
+            "level": user_data["level"],
+            "delivery_type": "extra_practice",
+            "topic_id": topic_id,
+            "topic_name": topic_name(topic_id),
+            "advance_topic": False,
+            "requires_delivery_record": True,
+            "focus": None,
+        }
+
+    return {
+        "username": username,
+        "week_number": week_number,
+        "level": user_data["level"],
+        "delivery_type": "feynman",
+        "topic_id": None,
+        "topic_name": None,
+        "advance_topic": False,
+        "requires_delivery_record": False,
+        "focus": None,
+    }
 
 
 def _operation_signature(action_name: str, **metadata: Any) -> str:
@@ -392,11 +493,6 @@ def record_assignment_delivery(payload: dict[str, Any]) -> dict[str, Any]:
                 f"daily_quiz cannot use exam topic {topic_id}",
                 entity=_entity_user(username),
             )
-        if topic_id != current_topic:
-            raise OperationError(
-                f"daily_quiz topic must match current_topic {current_topic}, got {topic_id}",
-                entity=_entity_user(username),
-            )
     elif payload["delivery_type"] in {"saturday_exam", "early_exam"}:
         expected_exam_topic = exam_topic_for_week(week_number)
         if topic_id != expected_exam_topic:
@@ -404,20 +500,19 @@ def record_assignment_delivery(payload: dict[str, Any]) -> dict[str, Any]:
                 f"{payload['delivery_type']} topic must be {expected_exam_topic}, got {topic_id}",
                 entity=_entity_user(username),
             )
-    elif payload["delivery_type"] == "consolidation_practice" and is_exam_topic(topic_id):
+    elif payload["delivery_type"] in {"consolidation_practice", "extra_practice"} and is_exam_topic(topic_id):
         raise OperationError(
-            f"consolidation_practice cannot use exam topic {topic_id}",
+            f"{payload['delivery_type']} cannot use exam topic {topic_id}",
             entity=_entity_user(username),
         )
 
     changes = list(normalization_changes)
     logs: list[str] = []
 
-    if payload["delivery_type"] == "daily_quiz" and advance_topic:
-        next_topic = next_topic_in_week(topic_id)
-        if next_topic:
-            user_data["current_week_state"]["current_topic"] = next_topic
-            changes.append(f"advanced current_topic to {next_topic}")
+    if payload["delivery_type"] == "daily_quiz":
+        refreshed_topic = _refresh_current_topic_to_stage_queue(user_data)
+        if refreshed_topic != current_topic:
+            changes.append(f"refreshed current_topic to {refreshed_topic}")
 
     upsert_assignment_receipt(
         user_data,
@@ -468,6 +563,7 @@ def apply_interaction_result(payload: dict[str, Any]) -> dict[str, Any]:
 
     question_type = payload["question_type"]
     topic_id = payload.get("topic_id")
+    resolved_weak_points = payload.get("resolved_weak_points") or []
     effective_history = _effective_interaction_history(payload)
     effective_mark_daily_answered = bool(payload.get("mark_daily_answered"))
     effective_mark_feynman_used = question_type == "feynman" or bool(payload.get("mark_feynman_used"))
@@ -479,11 +575,17 @@ def apply_interaction_result(payload: dict[str, Any]) -> dict[str, Any]:
         "extra_practice",
         "hidden_challenge",
     }
+    supplementary_types = {
+        "feynman",
+        "consolidation_practice",
+        "extra_practice",
+    }
     receipt_required_types = {
         "daily_quiz",
         "makeup_exam",
         "saturday_exam",
         "consolidation_practice",
+        "extra_practice",
     }
     mutation_type_allowlist = {
         "mark_daily_answered": {"daily_quiz"},
@@ -570,6 +672,18 @@ def apply_interaction_result(payload: dict[str, Any]) -> dict[str, Any]:
             entity=_entity_user(username),
         )
 
+    if resolved_weak_points and question_type not in supplementary_types:
+        raise OperationError(
+            "resolved_weak_points is only allowed for supplementary question types",
+            entity=_entity_user(username),
+        )
+
+    if resolved_weak_points and payload.get("score", 0) < 90:
+        raise OperationError(
+            "resolved_weak_points requires score >= 90",
+            entity=_entity_user(username),
+        )
+
     for field_name, allowed_question_types in mutation_type_allowlist.items():
         if field_name == "week_daily_record_index":
             if field_name in payload and question_type not in allowed_question_types:
@@ -608,15 +722,32 @@ def apply_interaction_result(payload: dict[str, Any]) -> dict[str, Any]:
                 date=payload["date"],
             )
 
-    if "score_change" in payload:
+    effective_score_change = payload.get("score_change")
+    supplementary_reward_consumed = False
+    if effective_score_change is not None and question_type in supplementary_types and effective_score_change > 0:
+        reward_count = user_data["current_week_state"].setdefault("supplementary_reward_count", 0)
+        if reward_count >= 5:
+            effective_score_change = 0
+            changes.append("supplementary reward cap reached; ignored positive score_change")
+        else:
+            supplementary_reward_consumed = True
+
+    if effective_score_change is not None:
         old_score = user_data["current_week_state"]["estimated_score"]
         user_data["current_week_state"]["estimated_score"] = round(
-            old_score + payload["score_change"], 2
+            old_score + effective_score_change, 2
         )
         changes.append(
             "updated current_week_state.estimated_score "
             f"from {old_score} to {user_data['current_week_state']['estimated_score']}"
         )
+        if supplementary_reward_consumed:
+            old_reward_count = user_data["current_week_state"].setdefault("supplementary_reward_count", 0)
+            user_data["current_week_state"]["supplementary_reward_count"] = old_reward_count + 1
+            changes.append(
+                "incremented supplementary_reward_count "
+                f"from {old_reward_count} to {user_data['current_week_state']['supplementary_reward_count']}"
+            )
 
     if effective_mark_daily_answered:
         user_data["current_week_state"]["daily_answered"] = True
@@ -672,6 +803,28 @@ def apply_interaction_result(payload: dict[str, Any]) -> dict[str, Any]:
             )
         user_data.setdefault("weak_points_history", []).append(weak_point_entry)
         changes.append(f"appended weak_points_history for {weak_point_entry['topic_id']}")
+        active_weak_points = user_data["current_week_state"].setdefault("active_weak_points", [])
+        existing_pairs = {(entry["topic_id"], entry["weak_point"]) for entry in active_weak_points}
+        added_count = 0
+        for weak_point in weak_point_entry.get("weak_points", []):
+            pair = (weak_point_entry["topic_id"], weak_point)
+            if pair in existing_pairs:
+                continue
+            active_weak_points.append({"topic_id": weak_point_entry["topic_id"], "weak_point": weak_point})
+            existing_pairs.add(pair)
+            added_count += 1
+        if added_count:
+            changes.append(f"activated {added_count} weak point(s) for supplementary tasks")
+
+    if resolved_weak_points:
+        active_weak_points = user_data["current_week_state"].setdefault("active_weak_points", [])
+        before_count = len(active_weak_points)
+        user_data["current_week_state"]["active_weak_points"] = [
+            entry for entry in active_weak_points if entry.get("weak_point") not in resolved_weak_points
+        ]
+        removed_count = before_count - len(user_data["current_week_state"]["active_weak_points"])
+        if removed_count:
+            changes.append(f"resolved {removed_count} active weak point(s)")
 
     history_entry = deepcopy(effective_history)
     history_entry["date"] = payload["date"]
@@ -680,6 +833,12 @@ def apply_interaction_result(payload: dict[str, Any]) -> dict[str, Any]:
     if receipt_to_answer is not None and receipt_to_answer.get("status") != "answered":
         receipt_to_answer["status"] = "answered"
         changes.append("marked assignment receipt as answered")
+
+    if question_type in {"daily_quiz", "makeup_exam"} and topic_id is not None and not is_exam_topic(topic_id):
+        previous_topic = user_data["current_week_state"]["current_topic"]
+        refreshed_topic = _refresh_current_topic_to_stage_queue(user_data)
+        if refreshed_topic != previous_topic:
+            changes.append(f"refreshed current_topic to {refreshed_topic}")
 
     if operation_id:
         mark_operation_processed(
@@ -801,6 +960,16 @@ def apply_early_exam_update(payload: dict[str, Any]) -> dict[str, Any]:
     else:  # pragma: no cover
         raise OperationError(f"unsupported early exam action: {action}", entity=_entity_user(username))
 
+    if resolved_weak_points:
+        active_weak_points = user_data["current_week_state"].setdefault("active_weak_points", [])
+        before_count = len(active_weak_points)
+        user_data["current_week_state"]["active_weak_points"] = [
+            entry for entry in active_weak_points if entry.get("weak_point") not in resolved_weak_points
+        ]
+        removed_count = before_count - len(user_data["current_week_state"]["active_weak_points"])
+        if removed_count:
+            changes.append(f"resolved {removed_count} active weak point(s)")
+
     history_entry = deepcopy(effective_history)
     history_entry["date"] = payload["date"]
     logs.append(_append_history(user_data, history_entry))
@@ -830,16 +999,34 @@ def resolve_assignment(payload: dict[str, Any]) -> dict[str, Any]:
     week_number = user_data["current_week_state"]["week_number"]
 
     if payload["delivery_type"] == "daily_quiz":
-        topic_id = user_data["current_week_state"]["current_topic"]
-        if is_exam_topic(topic_id):
+        topic_id = _first_unanswered_daily_topic(user_data, week_number)
+        if topic_id is None:
             raise OperationError(
-                f"current_topic {topic_id} is an exam topic and cannot be used as daily_quiz",
+                f"all daily_quiz topics are already answered for week {week_number}; use saturday_exam or supplementary_task",
                 entity=_entity_user(username),
             )
-        advance_topic = True
+        assignment = {
+            "username": username,
+            "week_number": week_number,
+            "level": user_data["level"],
+            "delivery_type": payload["delivery_type"],
+            "topic_id": topic_id,
+            "topic_name": topic_name(topic_id),
+            "advance_topic": True,
+        }
+    elif payload["delivery_type"] == "supplementary_task":
+        assignment = _resolve_supplementary_assignment(user_data, username, week_number)
     elif payload["delivery_type"] in {"saturday_exam", "early_exam"}:
         topic_id = exam_topic_for_week(week_number)
-        advance_topic = False
+        assignment = {
+            "username": username,
+            "week_number": week_number,
+            "level": user_data["level"],
+            "delivery_type": payload["delivery_type"],
+            "topic_id": topic_id,
+            "topic_name": topic_name(topic_id),
+            "advance_topic": False,
+        }
     else:  # pragma: no cover
         raise OperationError(
             f"unsupported delivery_type for resolver: {payload['delivery_type']}",
@@ -849,15 +1036,7 @@ def resolve_assignment(payload: dict[str, Any]) -> dict[str, Any]:
     return {
         "status": "ok",
         "entity": {"type": "assignment", "id": f"{username}:{payload['delivery_type']}"},
-        "assignment": {
-            "username": username,
-            "week_number": week_number,
-            "level": user_data["level"],
-            "delivery_type": payload["delivery_type"],
-            "topic_id": topic_id,
-            "topic_name": topic_name(topic_id),
-            "advance_topic": advance_topic,
-        },
+        "assignment": assignment,
         "changes": normalization_changes,
         "logs": [],
         "errors": [],
@@ -959,6 +1138,8 @@ def _reset_week_state(user_data: dict[str, Any], next_week_number: int, estimate
     current_state["saturday_exam_answered"] = False
     current_state["saturday_exam_answered_date"] = None
     current_state["extra_practice_count"] = 0
+    current_state["supplementary_reward_count"] = 0
+    current_state["active_weak_points"] = []
     current_state["feynman_used_today"] = False
     current_state["feynman_used_date"] = None
     current_state["hidden_challenge_used_this_week"] = False

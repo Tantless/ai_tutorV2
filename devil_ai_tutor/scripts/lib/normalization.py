@@ -23,6 +23,8 @@ CURRENT_WEEK_DEFAULTS = {
     "saturday_exam_answered_date": None,
     "missed_days": 0,
     "extra_practice_count": 0,
+    "supplementary_reward_count": 0,
+    "active_weak_points": [],
     "feynman_used_today": False,
     "feynman_used_date": None,
     "hidden_challenge_used_this_week": False,

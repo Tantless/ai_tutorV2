@@ -67,6 +67,8 @@
         "saturday_exam_answered_date",
         "missed_days",
         "extra_practice_count",
+        "supplementary_reward_count",
+        "active_weak_points",
         "feynman_used_today",
         "feynman_used_date",
         "hidden_challenge_used_this_week",
@@ -185,6 +187,31 @@
                   "answered",
                   "missed"
                 ]
+              }
+            }
+          }
+        },
+        "supplementary_reward_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active_weak_points": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "topic_id",
+              "weak_point"
+            ],
+            "properties": {
+              "topic_id": {
+                "type": "string",
+                "pattern": "^(K[1-4]_[1-4]|EXAM_W[1-4])$"
+              },
+              "weak_point": {
+                "type": "string",
+                "minLength": 1
               }
             }
           }

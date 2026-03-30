@@ -16,7 +16,8 @@
       "enum": [
         "daily_quiz",
         "saturday_exam",
-        "early_exam"
+        "early_exam",
+        "supplementary_task"
       ]
     }
   }

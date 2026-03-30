@@ -67,6 +67,7 @@ DELIVERY_TYPES = {
     "daily_quiz",
     "saturday_exam",
     "consolidation_practice",
+    "extra_practice",
     "early_exam",
 }
 
