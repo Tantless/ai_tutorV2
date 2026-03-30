@@ -1,4 +1,4 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import json
 from copy import deepcopy
@@ -871,7 +871,7 @@ def handle_midnight_reset(payload: dict[str, Any]) -> dict[str, Any]:
     changes = list(normalization_changes)
     logs: list[str] = []
     current_state = user_data["current_week_state"]
-    penalty_amount = payload.get("penalty_amount", -10)
+    penalty_amount = -abs(payload.get("penalty_amount", -10))
     missed_days_increment = payload.get("missed_days_increment", 1)
 
     replay_result = _replay_result(
@@ -1265,3 +1265,4 @@ def promote_level(payload: dict[str, Any]) -> dict[str, Any]:
 
     save_user(username, user_data)
     return ok_result(_entity_user(username), changes=changes, logs=logs)
+
